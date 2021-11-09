@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mktplace</title>
+
+    <!-- Styles -->
+    <style>
+      /* Init and extras*/
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      html {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: min-content 1fr min-content;
+        height: 100%;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        list-style-type: none;
+      }
+      .offsetboard {
+        padding: 0 15rem;
+      }
+      @media (max-width: 480px) {
+        .offsetboard {
+          padding: 0 0.5rem;
+        }
+      }
+      .text_purple {
+        color: #9c27b0;
+      }
+      .text_white {
+        color: #fff;
+      }
+
+      .text_end {
+        text-align: right;
+      }
+      .text_start {
+        text-align: left;
+      }
+      .text_center {
+        text-align: center;
+      }
+
+      .divider {
+        border-bottom: 2px solid #e0e0e0;
+        margin: 1rem 0;
+      }
+
+      .icon {
+        height: 90%;
+      }
+
+      /*  Header  */
+      .header {
+        background-color: #fff;
+        padding: 1rem 15rem;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      @media (max-width: 480px) {
+        .header {
+          padding: 1rem 0.5rem;
+        }
+      }
+      .header_nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header_ul {
+        display: flex;
+      }
+      .header_ul li {
+        margin-right: 1rem;
+      }
+
+      /*  Table  */
+      .cart_table {
+        background-color: #fff;
+        width: 100%;
+      }
+      .cart_table td {
+        padding: 0.5rem;
+      }
+
+      /* buttons */
+      .clear_cart * {
+        height: 1.5rem;
+      }
+
+      /*  Footer  */
+      .footer {
+        display: flex;
+        position: relative;
+        bottom: 0%;
+        width: 100%;
+        justify-content: center;
+        padding: 0.5rem;
+        margin-top: 1rem;
+        background-color: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="offsetboard header">
+      <nav class="header_nav">
+        <h2>Mkt<nobr class="text_purple">Place</nobr></h2>
+        <ul class="header_ul">
+          <li><a href="products.html">Produtos</a></li>
+          <li>
+            <a href="cart.html">
+              <img
+                src="../../assets/resources/icons/shopping-cart.svg"
+                alt="cart"
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!--- Table -->
+
+      <table class="cart_table offsetboard" cellpadding="2">
+        <thead class="border_bottom">
+          <tr>
+            <th class="text_center">Produto</th>
+            <th class="text_center">Quantidade</th>
+            <th class="text_center">Valor unitario</th>
+            <th></th>
+            <th class="text_start">Total</th>
+          </tr>
+          <tr>
+            <td colspan="5" class="divider"></td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="border_bottom">
+            <td class="text_center">Values Produto</td>
+            <td class="text_center">Values quantidade</td>
+            <td class="text_center">Values unitario</td>
+            <td></td>
+            <td class="text_start">Values total</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="divider"></td>
+          </tr>
+        </tbody>
+
+        <tfoot class="border_bottom">
+          <tr>
+            <td colspan="3"></td>
+            <td class="text_end">total a vista</td>
+            <td class="text_start">valor a vista</td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td class="text_end">total parcelado</td>
+            <td class="text_start">total valor parcelado</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="divider"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <section class="cart_menu">
+        <div class="clear_cart">
+          <button>
+            <img
+              src="../../assets/resources/icons/garbage.svg"
+              alt=""
+              class="icon"
+            />
+          </button>
+          Limpar carrinho
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <h2>Mkt<nobr class="text_purple">Place</nobr></h2>
+    </footer>
+  </body>
+</html>

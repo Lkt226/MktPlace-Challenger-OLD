@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mktplace</title>
+
+    <!-- Styles -->
+    <style>
+      /* Init and extras*/
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      html {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: min-content 1fr min-content;
+        height: 100%;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        list-style-type: none;
+      }
+      .offsetboard {
+        padding: 0 15rem;
+      }
+      @media (max-width: 480px) {
+        .offsetboard {
+          padding: 0 0.5rem;
+        }
+      }
+      .text_purple {
+        color: #9c27b0;
+      }
+      .text_white {
+        color: #fff;
+      }
+      .icon {
+        height: 90%;
+      }
+
+      /*  Header  */
+      .header {
+        background-color: #fff;
+        padding: 1rem 15rem;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      @media (max-width: 480px) {
+        .header {
+          padding: 1rem 0.5rem;
+        }
+      }
+      .header_nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header_ul {
+        display: flex;
+      }
+      .header_ul li {
+        margin-right: 1rem;
+      }
+
+      /*  Banner  */
+      .content_banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        height: 30vh;
+        background-color: #9c27b0;
+      }
+      .radio_list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .radio_list label {
+        font-size: 0;
+        margin-right: 1rem;
+      }
+      .radio_list input {
+      }
+
+      /*  Search  */
+
+      .seach_area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+      .seach_area > * {
+        height: 1.5rem;
+      }
+      .seach_area input {
+        width: 100%;
+        height: 100%;
+
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        background-color: #e0e0e0;
+      }
+      .seach_area label {
+        font-size: 1rem;
+        margin-right: 1rem;
+        min-width: fit-content;
+      }
+
+      /*  Products  */
+      .products {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (max-width: 480px) {
+        .products {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .products .container_product {
+        display: grid;
+        grid-template-rows: 4fr 6fr 1fr;
+        justify-content: start;
+        align-items: stretch;
+        max-width: 18rem;
+        height: fit-content;
+        max-height: 25rem;
+        margin: 0.5rem;
+        background-color: #fff;
+        box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+      }
+      @media (max-width: 480px) {
+        .products .container_product {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+
+      .products .container_product .product_texts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1rem;
+        height: 100%;
+        overflow-y: auto;
+      }
+      .products .container_product .product_img {
+        width: 100%;
+        background-color: #eee;
+        background-size: cover;
+        background-position: center;
+      }
+      .products .container_product .product_button {
+        width: 100%;
+      }
+
+      /*  Footer  */
+      .footer {
+        display: flex;
+        position: relative;
+        bottom: 0%;
+        width: 100%;
+        justify-content: center;
+        padding: 0.5rem;
+        margin-top: 1rem;
+        background-color: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="offsetboard header">
+      <nav class="header_nav">
+        <h2>Mkt<nobr class="text_purple">Place</nobr></h2>
+        <ul class="header_ul">
+          <li><a href="products.html">Produtos</a></li>
+          <li>
+            <a href="cart.html">
+              <img
+                src="../../assets/resources/icons/shopping-cart.svg"
+                alt="cart"
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Banner -->
+      <section class="banner">
+        <div class="content_banner offsetboard">
+          <h1 class="text_white">Notebooks</h1>
+          <h3 class="text_white">Receba as melhores ofertas</h3>
+        </div>
+        <div class="radio_list">
+          <label>
+            <input type="radio" name="radio_banner" />
+            <span>Buy 1</span>
+          </label>
+          <label>
+            <input type="radio" name="radio_banner" />
+            <span>Buy 2</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Search -->
+      <form action="" class="seach_area offsetboard">
+        <label for="search_product">Encontre seu produto</label>
+        <input
+          type="text"
+          placeholder="Pesquisar"
+          name="search_product"
+          id="search_product"
+        />
+        <button type="submit">
+          <img
+            class="icon"
+            src="../../assets/resources/icons/magnifying-glass.svg"
+            alt="buscar"
+          />
+        </button>
+      </form>
+
+      <!-- Products -->
+
+      <section class="products offsetboard">
+        <div class="container_product">
+          <img
+            src="../../assets/resources/images/product1.jpg"
+            alt="product1"
+            class="product_img"
+          />
+          <div class="product_texts">
+            <h3>Notebook Dell</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pellentesque euismod, ipsum eget sagittis consectetur, nisi lectus
+              aliquet nunc, eget egestas nunc nisl eu nisi.
+            </p>
+            <div class="product_price">
+              <span>R$</span>
+              <span>1.000,00</span>
+            </div>
+          </div>
+          <button type="button" class="product_button">Comprar</button>
+        </div>
+
+        <div class="container_product">
+          <img
+            src="../../assets/resources/images/product1.jpg"
+            alt="product1"
+            class="product_img"
+          />
+          <div class="product_texts">
+            <h3>Notebook Dell</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pellentesque euismod, ipsum eget sagittis consectetur, nisi lectus
+              aliquet nunc, eget egestas nunc nisl eu nisi.
+            </p>
+            <div class="product_price">
+              <span>R$</span>
+              <span>1.000,00</span>
+            </div>
+          </div>
+          <button type="button" class="product_button">Comprar</button>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <h2>Mkt<nobr class="text_purple">Place</nobr></h2>
+    </footer>
+  </body>
+</html>

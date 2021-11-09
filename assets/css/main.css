@@ -1,0 +1,80 @@
+@import "./reset.css";
+
+@font-face {
+  font-family: SourceSansPro;
+  src: url("../resources/fonts/SourceSansPro-Black.ttf");
+  font-weight: 800;
+}
+@font-face {
+  font-family: SourceSansPro;
+  src: url("../resources/fonts/SourceSansPro-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: SourceSansPro;
+  src: url("../resources/fonts/SourceSansPro-Regular.ttf");
+}
+
+:root {
+  --color-purple: #9c149e;
+  --color-gray: #e4e4e4;
+  --color-dkgray: #777777;
+  --color-black: #4e4e4e;
+  --color-white: #ffffff;
+}
+
+.offsetBoard {
+  padding-right: 10rem !important;
+  padding-left: 10rem !important;
+}
+.offsetBoard-m {
+  margin-right: 10rem !important;
+  margin-left: 10rem !important;
+}
+
+@media (max-width: 768px) {
+  .offsetBoard {
+    padding-right: 5rem !important;
+    padding-left: 5rem !important;
+  }
+  .offsetBoard-m {
+    margin-right: 5rem !important;
+    margin-left: 5rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .offsetBoard {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
+  }
+  .offsetBoard-m {
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
+  }
+}
+
+* {
+  font-family: SourceSansPro, sans-serif;
+  color: var(--color-dkgray);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.3rem;
+}
+h4 {
+  font-size: 1.1rem;
+}
+p {
+  font-size: 1rem;
+}

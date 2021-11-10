@@ -9,7 +9,7 @@
             <th class="center">Produto</th>
             <th class="center">Quantidade</th>
             <th class="center">Valor unitario</th>
-            <th></th>
+            <th class="md"></th>
             <th class="start">Total</th>
           </tr>
           <tr>
@@ -18,7 +18,7 @@
         </thead>
 
         <tbody>
-          <ItemTableCart v-for="product in cart" :key="product.id"/>
+          <ItemTableCart v-for="(product, index) in cart" :key="index" :item="product" @refresh="refresh"/>
           <tr>
             <td colspan="5" class="divider"></td>
           </tr>
@@ -26,12 +26,14 @@
 
         <tfoot class="border_bottom">
           <tr>
-            <td colspan="3"></td>
+            <td colspan="2"></td>
+            <td class="md"></td>
             <td class="end">total a vista</td>
-            <td class="start">valor a vista</td>
+            <td class="start">{{total}}</td>
           </tr>
           <tr>
-            <td colspan="3"></td>
+            <td colspan="2"></td>
+            <td class="md"></td>
             <td class="end">total parcelado</td>
             <td class="start">total valor parcelado</td>
           </tr>
@@ -41,26 +43,49 @@
         </tfoot>
       </table>
       <section class="cart_menu">
-        <div class="clear_cart">
+        <div class="clear_cart" @click="clearCart">
           <Icon name="garbage" color="var(--color-gray)"/>
           <p class="bold">Limpar carrinho</p>
+        </div>
+
+        <div class="buttons">
+          <NuxtLink to="/"><button> Continuar comprando </button></NuxtLink>
+          <NuxtLink to="/checkout"><button class="diferent-button"> Concluir compra </button></NuxtLink>
         </div>
       </section>
 
 
     </main>
-    <Footer style="display: fixed; bottom: 0;"/>
+    <Footer class="fixed"/>
   </div>
 </template>
 
 <script>
 const Users = require("../assets/services/User")
-const user = new Users()
+const user = Users()
 
 export default {
-  data(){
-    return{
-      cart: user.getCart()
+  data() {
+    return {
+      cart: user.getCart(),
+    }
+  },
+  methods: {
+    refresh() {
+      this.cart = user.getCart()
+    },
+    clearCart() {
+      user.clearCart()
+      this.refresh()
+    }
+  },
+  computed: {
+    total(){
+      let total = 0;
+      this.cart.forEach(products => {
+        total += products.price * products.quantity
+      })
+      return total
     }
   }
 
@@ -69,6 +94,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .fixed {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    @media (max-width: 576px) {
+      position: relative;
+    }
+  }
+
+  .md{
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
 
   .center {
     text-align: center;
@@ -88,6 +128,10 @@ export default {
   .body{
     display: grid;
     grid-template-rows: min-content 100% min-content;
+
+    @media (max-width: 576px) {
+      display: block;
+    }
   }
   .cart_table {
     background-color: #fff;
@@ -105,5 +149,53 @@ export default {
     display: flex;
     align-items: center;
     cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .cart_menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+
+      *{
+        width: 100%;
+      }
+    }
+
+    .buttons{
+      display: flex;
+
+      @media (max-width: 576px) {
+        flex-direction: column;
+      }
+      button{
+        background-color: var(--color-gray);
+        color: var(--color-black);
+
+        padding: 0.5rem 1rem;
+        margin-left: 1rem;
+
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+
+        width: 10rem;
+        font-size: 0.8rem;
+        font-weight: bold;
+
+        @media (max-width: 576px) {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+      .diferent-button{
+        background-color: var(--color-purple);
+        color: var(--color-white);
+      }
+    }
   }
 </style>

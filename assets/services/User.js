@@ -1,28 +1,50 @@
+const user = {
+  cart: [],
+}
+
 function Users() {
-
-  let user = {
-    cart: [],
-  }
-
-  function getLocalStore() {
-    if(typeof window !== 'undefined') {
-      user.cart = JSON.parse(localStorage.getItem('cart')) || []
-      console.log('localhost pego',  JSON.parse(localStorage.getItem('cart')))
+  function addToCart(product) {
+    if (user.cart.length === 0) {
+      user.cart.push(Object.assign({quantity:1}, product))
+    }else{
+      let cartProduct = user.cart.find(item => item.id === product.id)
+      if (cartProduct) {
+        cartProduct.quantity++
+      }else{
+        user.cart.push(Object.assign({quantity:1}, product))
+      }
     }
   }
-  getLocalStore()
 
-  function addToCart(product) {
-    user.cart.push(product)
-    localStorage.setItem('cart', JSON.stringify(user.cart))
+  addQuantity = (id) => {
+    let cartProduct = user.cart.find(item => item.id === id)
+    cartProduct.quantity += 1
+  }
+
+  removeQuantity = (id) => {
+    let cartProduct = user.cart.find(item => item.id === id)
+    cartProduct.quantity -= 1
+    if (cartProduct.quantity === 0) {
+      user.cart = user.cart.filter(item => item.id !== id)
+    }
   }
 
   function getCart() {
-    getLocalStore()
     return user.cart
   }
 
+  function getUniqueProduct(id){
+    let cartProduct = user.cart.find(item => item.id === id)
+    return cartProduct
+  }
 
+  function removeFromCart(id) {
+    user.cart = user.cart.filter(item => item.id !== id)
+  }
+
+  function clearCart() {
+    user.cart = []
+  }
 
   function consoleCart() {
     console.log(user.cart)
@@ -32,6 +54,11 @@ function Users() {
     consoleCart,
     getCart,
     addToCart,
+    addQuantity,
+    removeQuantity,
+    getUniqueProduct,
+    removeFromCart,
+    clearCart
   }
 }
 

@@ -34,7 +34,6 @@ export default {
   methods: {
     addToCart() {
       user.addToCart(this.product)
-      user.consoleCart()
     }
   }
 }

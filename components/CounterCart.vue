@@ -7,10 +7,19 @@
 </template>
 
 <script>
+const Users = require("../assets/services/User")
+const user = new Users()
+
 export default {
-  name: 'CounterCart',
+  created() {
+    this.$emit('refresh', '')
+  },
   props: {
     value: {
+      type: Number,
+      default: 0
+    },
+    productId: {
       type: Number,
       default: 0
     }
@@ -23,11 +32,13 @@ export default {
   methods: {
     increment() {
       this.count++
-      this.$emit('input', this.count)
+      user.addQuantity(this.productId)
+      this.$emit('refresh', '')
     },
     decrement() {
       this.count--
-      this.$emit('input', this.count)
+      user.removeQuantity(this.productId)
+      this.$emit('refresh', '')
     }
   }
 }

@@ -9,7 +9,6 @@
             <th class="center">Produto</th>
             <th class="center">Quantidade</th>
             <th class="center">Valor unitario</th>
-            <th class="md"></th>
             <th class="start">Total</th>
           </tr>
           <tr>
@@ -27,13 +26,11 @@
         <tfoot class="border_bottom">
           <tr>
             <td colspan="2"></td>
-            <td class="md"></td>
             <td class="end">total a vista</td>
             <td class="start">{{total}}</td>
           </tr>
           <tr>
             <td colspan="2"></td>
-            <td class="md"></td>
             <td class="end">total parcelado</td>
             <td class="start">total valor parcelado</td>
           </tr>
@@ -50,7 +47,7 @@
 
         <div class="buttons">
           <NuxtLink to="/"><button> Continuar comprando </button></NuxtLink>
-          <NuxtLink to="/checkout"><button class="diferent-button"> Concluir compra </button></NuxtLink>
+          <button class="diferent-button" @click="goToCheckout"> Concluir compra </button>
         </div>
       </section>
 
@@ -77,6 +74,13 @@ export default {
     clearCart() {
       user.clearCart()
       this.refresh()
+    },
+    goToCheckout() {
+      if (this.cart.length > 0) {
+        this.$router.push("/checkout")
+      }else{
+        alert("Carrinho vazio")
+      }
     }
   },
   computed: {

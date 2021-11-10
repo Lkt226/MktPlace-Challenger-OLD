@@ -5,55 +5,55 @@
       <form action="" name="checkout" method="post" class="offsetBoard" @submit="handleSubmit">
         <label id="name">
           <p>Nome*</p>
-          <input type="text" required name="name"/>
+          <input type="text" required name="name" id="inputName" :value="myName"/>
         </label>
         <label id="email">
           <p>E-mail*</p>
-          <input type="email" required name="email" placeholder="voce@gmail.com" />
+          <input type="email" required name="email" placeholder="voce@gmail.com" id="inputEmail" :value="myEmail"/>
         </label>
         <label id="cpf">
           <p>CPF*</p>
-          <input type="text" inputmode="numeric" minlength="11" maxlength="14" placeholder="111.111.111-99"
+          <input type="text" inputmode="numeric" minlength="11" maxlength="14" placeholder="111.111.111-99" id="inputCPF"
           pattern="^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}" :value="myCPF" @input="formatCPF" required name="cpf"/>
         </label>
         <label id="birthday">
           <p>Data de Nascimento*</p>
-          <input type="date" required name="birthday" />
+          <input type="date" required name="birthday" id="inputBirth" :value="myBirth"/>
         </label>
         <label id="telphone">
           <p>Telefone*</p>
-          <input type="text" required name="telphone" placeholder="+55 21 98930-6866" minlength="11" maxlength="15"
-          inputmode="tel" :value="myTel" @input="formatTel"/>
+          <input type="text" required name="telphone" placeholder="21 98930-6866" minlength="11" maxlength="15"
+          inputmode="tel" :value="myTel" @input="formatTel" id="inputTel" pattern="^[0-9]{2} ?[0-9]{5}-?[0-9]{4}"/>
         </label>
 
         <label id="cep">
           <p>CEP*</p>
-          <input type="text" required name="cep" placeholder="24860-148" minlength="8" maxlength="9"
-          :value="myCEP" @input="formatCEP" @change="getCEP"/>
+          <input type="text" required name="cep" :placeholder="myCEPplace !== '' ? myCEPplace : '24860-148'" minlength="8" maxlength="9"
+          :value="myCEP" @input="formatCEP" @change="getCEP" id="inputCEP"/>
         </label>
         <label id="endress">
           <p>Endereço*</p>
-          <input type="text" required name="endress" :value="EndressComplete.endress" />
+          <input type="text" required name="endress" :value="EndressComplete.endress" id="inputEndress"/>
         </label>
         <label id="num">
           <p>Número</p>
-          <input type="number" name="num" />
+          <input type="number" name="num" :value="EndressComplete.num" id="inputNum"/>
         </label>
         <label id="complement">
           <p>Complemento</p>
-          <input type="text" name="complement" :value="EndressComplete.complement" />
+          <input type="text" name="complement" :value="EndressComplete.complement" id="inputComplement"/>
         </label>
         <label id="bairro">
           <p>Bairro*</p>
-          <input type="text" required name="bairro" :value="EndressComplete.bairro" />
+          <input type="text" required name="bairro" :value="EndressComplete.bairro" id="inputBairro"/>
         </label>
         <label id="city">
           <p>Cidade*</p>
-          <input type="text" required name="city" :value="EndressComplete.city"/>
+          <input type="text" required name="city" :value="EndressComplete.city" id="inputCity"/>
         </label>
         <label id="state">
           <p>Estado*</p>
-          <input type="text" required name="state" :value="EndressComplete.state" />
+          <input type="text" required name="state" :value="EndressComplete.state" id="inputState" />
         </label>
 
         <button id="button_finish" class="diferent-button" type="submit">
@@ -67,11 +67,44 @@
 </template>
 
 <script>
+const Users = require("../assets/services/User")
+const user = Users()
+
 export default {
+  mounted() {
+    this.getUserInfo()
+  },
   methods: {
     handleSubmit(e) {
       e.preventDefault()
-      this.modal = true
+      this.setUserInfo()
+      //this.modal = true
+    },
+    setUserInfo() {
+      const info = {
+        name: document.querySelector("#inputName").value,
+        email: document.querySelector("#inputEmail").value,
+        cpf: document.querySelector("#inputCPF").value,
+        phone: document.querySelector("#inputTel").value,
+        birth: document.querySelector("#inputBirth").value,
+
+        cep: document.querySelector("#inputCEP").value,
+        address: document.querySelector("#inputEndress").value,
+        number: document.querySelector("#inputNum").value,
+        complement: document.querySelector("#inputComplement").value,
+        bairro: document.querySelector("#inputBairro").value,
+        city: document.querySelector("#inputState").value,
+        state: document.querySelector("#inputState").value,
+      }
+      user.setUserInfo(info)
+    },
+    getUserInfo() {
+      this.myName = user.getUserInfo().name
+      this.myEmail = user.getUserInfo().email
+      this.myTel = user.getUserInfo().phone
+      this.myBirth = user.getUserInfo().birth
+
+      this.myCEPplace = user.getUserInfo().cep
     },
     async getCEP(e) {
       let cep = e.target.value
@@ -117,15 +150,20 @@ export default {
   },
   data() {
     return {
+      myName: '',
+      myBirth: '',
+      myEmail: '',
       myCPF: '',
       myCEP: '',
+      myCEPplace: '',
       myTel: '',
       EndressComplete: {
         endress: '',
         complement: '',
         bairro: '',
         city: '',
-        state: ''
+        state: '',
+        num: ''
       },
       modal: false,
     }

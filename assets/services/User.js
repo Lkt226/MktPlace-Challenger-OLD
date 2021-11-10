@@ -1,8 +1,36 @@
+// Acertar esse código no futuro, pq ta muito feio, mas funciona.
+// Talvez separar por actions.
 const user = {
+  info:{
+    name: '',
+    email: '',
+    cpf: '',
+    phone: '',
+    birth: '',
+
+    cep: '',
+    address: '',
+    number: '',
+    complement: '',
+    bairro: '',
+    city: '',
+    state: '',
+  },
   cart: [],
 }
 
 function Users() {
+  // User Infos functions
+  function getUserInfo() {
+    return user.info
+  }
+
+  function setUserInfo(info) {
+    user.info = info
+    localStorage.setItem('userInfo', JSON.stringify(user.info))
+  }
+
+  // Carrinho functions
   function addToCart(product) {
     if (user.cart.length === 0) {
       user.cart.push(Object.assign({quantity:1}, product))
@@ -14,11 +42,13 @@ function Users() {
         user.cart.push(Object.assign({quantity:1}, product))
       }
     }
+    localStorage.setItem('cart', JSON.stringify(user.cart))
   }
 
   addQuantity = (id) => {
     let cartProduct = user.cart.find(item => item.id === id)
     cartProduct.quantity += 1
+    localStorage.setItem('cart', JSON.stringify(user.cart))
   }
 
   removeQuantity = (id) => {
@@ -27,6 +57,7 @@ function Users() {
     if (cartProduct.quantity === 0) {
       user.cart = user.cart.filter(item => item.id !== id)
     }
+    localStorage.setItem('cart', JSON.stringify(user.cart))
   }
 
   function getCart() {
@@ -40,18 +71,17 @@ function Users() {
 
   function removeFromCart(id) {
     user.cart = user.cart.filter(item => item.id !== id)
+    localStorage.setItem('cart', JSON.stringify(user.cart))
   }
 
   function clearCart() {
     user.cart = []
   }
 
-  function consoleCart() {
-    console.log(user.cart)
-  }
-
   return {
-    consoleCart,
+    getUserInfo,
+    setUserInfo,
+
     getCart,
     addToCart,
     addQuantity,

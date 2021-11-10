@@ -13,7 +13,6 @@
     </td>
 
     <td class="center">{{product.price}}</td>
-    <td class="md"></td>
     <td class="start">{{totalPrice}}</td>
   </tr>
 </template>

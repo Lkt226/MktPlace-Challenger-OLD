@@ -67,6 +67,10 @@ export default {
       cart: user.getCart(),
     }
   },
+  mounted(){
+    user.getStorageUser()
+    this.refresh()
+  },
   methods: {
     refresh() {
       this.cart = user.getCart()

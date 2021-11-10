@@ -72,13 +72,14 @@ const user = Users()
 
 export default {
   mounted() {
+    user.getStorageUser()
     this.getUserInfo()
   },
   methods: {
     handleSubmit(e) {
       e.preventDefault()
       this.setUserInfo()
-      //this.modal = true
+      this.modal = true
     },
     setUserInfo() {
       const info = {
@@ -143,7 +144,7 @@ export default {
     formatTel(e) {
       let value = e.target.value
       value = value.replace(/\D/g, '')
-      value = value.replace(/(\d{2})(\d)/, '($1) $2')
+      value = value.replace(/(\d{2})(\d)/, '$1 $2')
       value = value.replace(/(\d{5})(\d)/, '$1-$2')
       this.myTel = value
     }

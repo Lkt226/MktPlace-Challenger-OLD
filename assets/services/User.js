@@ -20,6 +20,20 @@ const user = {
 }
 
 function Users() {
+  // LocalStorage
+  function getStorageUser() {
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('userInfo')) {
+        user.info = JSON.parse(localStorage.getItem('userInfo'));
+        //console.log(JSON.parse(localStorage.getItem('userInfo')))
+      }
+      if (localStorage.getItem('cart')) {
+        user.cart = JSON.parse(localStorage.getItem('cart'));
+        //console.log(JSON.parse(localStorage.getItem('cart')))
+      }
+    }
+  }
+
   // User Infos functions
   function getUserInfo() {
     return user.info
@@ -79,6 +93,8 @@ function Users() {
   }
 
   return {
+    getStorageUser,
+
     getUserInfo,
     setUserInfo,
 
@@ -91,5 +107,4 @@ function Users() {
     clearCart
   }
 }
-
 module.exports = Users

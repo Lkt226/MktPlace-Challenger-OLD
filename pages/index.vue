@@ -13,12 +13,17 @@
 </template>
 
 <script>
+const Users = require("../assets/services/User")
+const user = Users()
 const ApiUrl = 'https://raw.githubusercontent.com/owInteractive/desafio-frontend-2020/master/produtos.json'
 
 export default {
   async fetch(){
     const products = await this.$axios.$get(ApiUrl)
     this.products = products
+  },
+  mounted(){
+    user.getStorageUser()
   },
 
   data () {

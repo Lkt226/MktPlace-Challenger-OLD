@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  // Envia para pagina inicial
   methods:{
     goToHome(){
       this.$router.push('/')

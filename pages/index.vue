@@ -18,26 +18,33 @@ const user = Users()
 const ApiUrl = 'https://raw.githubusercontent.com/owInteractive/desafio-frontend-2020/master/produtos.json'
 
 export default {
+  // Pega os dados da API
   async fetch(){
     const products = await this.$axios.$get(ApiUrl)
     this.products = products
   },
+
+  // Verifica no index o localStorage
   mounted(){
     user.getStorageUser()
   },
 
+  // Informações do component index
   data () {
     return {
       products: this.products,
       searchValue: '',
     }
   },
+
+  // Pega o valor do input de pesquisa
   methods: {
     getSearchValue(value){
       this.searchValue = value
     },
   },
 
+  // Filtra os produtos
   computed: {
     searchFilter () {
       if(this.products){

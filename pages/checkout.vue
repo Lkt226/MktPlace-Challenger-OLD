@@ -67,20 +67,25 @@
 </template>
 
 <script>
+// Import de usuário
 const Users = require("../assets/services/User")
 const user = Users()
 
 export default {
+  // Checka o localStorage para ver se tem dados dele salvo e se sim, preenche os campos
   mounted() {
     user.getStorageUser()
     this.getUserInfo()
   },
   methods: {
+    // Adiciona os dado do usuário no localStorage e no objeto, alem disso abre o modal se tiver tudo certo.
     handleSubmit(e) {
       e.preventDefault()
       this.setUserInfo()
       this.modal = true
     },
+
+    // Pega os dados que o usuario digitol e coloca no Objeto
     setUserInfo() {
       const info = {
         name: document.querySelector("#inputName").value,
@@ -99,6 +104,7 @@ export default {
       }
       user.setUserInfo(info)
     },
+    // Pega os dados do objeto e joga para o data preencher os campos
     getUserInfo() {
       this.myName = user.getUserInfo().name
       this.myEmail = user.getUserInfo().email
@@ -107,6 +113,8 @@ export default {
 
       this.myCEPplace = user.getUserInfo().cep
     },
+
+    // Busca na Api do Cep o endereço completo
     async getCEP(e) {
       let cep = e.target.value
       cep = cep.replace("-", '')
@@ -126,7 +134,7 @@ export default {
       }
     },
 
-    // Formats
+    // Formatadores
     formatCPF(e) {
       let value = e.target.value
       value = value.replace(/\D/g, '')
@@ -149,6 +157,7 @@ export default {
       this.myTel = value
     }
   },
+  // Data do checkout
   data() {
     return {
       myName: '',

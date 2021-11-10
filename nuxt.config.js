@@ -9,7 +9,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '~/assets/static/favicon.svg' }
+      { rel: 'icon', type: 'image/x-icon', href: '~assets/static/favicon.svg' }
     ]
   },
 
@@ -47,7 +47,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'pt-br'
     }
   },
 

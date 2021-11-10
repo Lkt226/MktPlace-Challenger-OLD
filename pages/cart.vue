@@ -58,27 +58,33 @@
 </template>
 
 <script>
+//Import o usuario
 const Users = require("../assets/services/User")
 const user = Users()
 
 export default {
+  // Data do carrinho
   data() {
     return {
       cart: user.getCart(),
     }
   },
+  // Checa se tem produtos do carrinho em localStorage e atualiza o carrinho
   mounted(){
     user.getStorageUser()
     this.refresh()
   },
   methods: {
+    // Atualiza o carrinho
     refresh() {
       this.cart = user.getCart()
     },
+    // Limpa o carrinho
     clearCart() {
       user.clearCart()
       this.refresh()
     },
+    // Redireciona para a página de checkout se tiver tudo certo
     goToCheckout() {
       if (this.cart.length > 0) {
         this.$router.push("/checkout")
@@ -88,6 +94,7 @@ export default {
     }
   },
   computed: {
+    // Calcula o valor total do carrinho
     total(){
       let total = 0;
       this.cart.forEach(products => {

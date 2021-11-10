@@ -1,69 +1,28 @@
 # MktPlace-Challenger
 
-## Build Setup
+## Para rodar o projeto
 
-```bash
-# install dependencies
-$ npm install
+[] Clone o projeto para sua maquina
+[] No terminal digite "npm install" para instalar as dependencias
+[] No terminal digite "Nuxt" para abrir o projeto em dev
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## Projeto
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+Projeto é um desafio da OW Interactive, para uma vaga de Front-end, neste projeto estou usando o VUE, Nuxt, Consumo de 2 APIs, Axios, SCSS
 
-# generate static project
-$ npm run generate
-```
+### Regras
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+- Escrever HTML semântico;
+- Utilizar o template do VueJS (.vue);
+- Utilizar algum sistema de grid (ex: Bootstrap Grid);
+- Utilizar animações de hover;
+- Utilizar máscaras e validações no formulário;
+- Utilizar o Axios ou Fetch na integração da API;
+- Utilizar pré-processador para escrever o CSS (ex: SASS);
+- Utilizar algum task runner ou module bundler na compilação/transpilação dos seus assets;
+- Atenção: Não utilizar qualquer biblioteca de UI para desenvolver os componentes da página.
 
-## Special Directories
+### Diferenciais
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+- Utilizar o Nuxt ou a Vue CLI no desenvolvimento do projeto;
+- Utilizar o ECMA6+ para escrever o JS.

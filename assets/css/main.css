@@ -21,6 +21,7 @@
   --color-dkgray: #777777;
   --color-black: #4e4e4e;
   --color-white: #ffffff;
+  --color-green: #00a859;
 }
 
 .offsetBoard {
@@ -77,4 +78,8 @@ h4 {
 }
 p {
   font-size: 1rem;
+}
+
+::placeholder {
+  color: var(--color-gray);
 }
